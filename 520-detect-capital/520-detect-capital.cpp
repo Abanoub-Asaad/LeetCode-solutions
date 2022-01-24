@@ -7,8 +7,8 @@ public:
         if(word.size() == 1)
             return true;
         
-        bool firstLetterIsCapital = (word[0] >= 'A' && word[0] <= 'Z');
-        bool secondLetterIsCapital = (word[1] >= 'A' && word[1] <= 'Z');
+        bool firstLetterIsCapital = isupper(word[0]);
+        bool secondLetterIsCapital = isupper(word[1]);
             
         for(int i = 2; i < word.size(); i++)
         {
