@@ -12,7 +12,7 @@ public:
             
         for(int i = 2; i < word.size(); i++)
         {
-            currentLetterIsCapital = (word[i] >= 'A' && word[i] <= 'Z');
+            currentLetterIsCapital = isupper(word[i]);
                 
             if(currentLetterIsCapital != secondLetterIsCapital)
                 return false;
