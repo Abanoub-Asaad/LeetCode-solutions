@@ -29,10 +29,7 @@ public:
         for(int i = 0; i < word.size(); i++)
         {
              if(word[i] != '.' && word[i] != str[i])
-             {
-                 isEqual = false;
-                 break;
-             }
+                isEqual = false;
         }
         return isEqual;
     }
