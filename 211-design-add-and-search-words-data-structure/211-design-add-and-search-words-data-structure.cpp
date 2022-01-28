@@ -31,7 +31,7 @@ public:
              if(word[i] != '.' && word[i] != str[i])
              {
                  isEqual = false;
-                 continue;
+                 break;
              }
         }
         return isEqual;
