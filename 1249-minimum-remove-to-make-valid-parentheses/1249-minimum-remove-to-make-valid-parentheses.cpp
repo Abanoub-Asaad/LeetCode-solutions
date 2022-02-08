@@ -2,26 +2,35 @@ class Solution {
 public:
     string minRemoveToMakeValid(string s) {
         
-        stack<int> openBracketsIndices;
-
-        for(int i = 0; i < s.size(); i++)
+        int count = 0, n = s.size();
+        string result = "";
+        
+        for(int i = 0; i < n; i++)
         {
             if(s[i] == '(')
-                openBracketsIndices.push(i);
+                ++count;
             else if(s[i] == ')')
             {
-                if(openBracketsIndices.empty())
-                    s[i] = ' ';
+                if(count)
+                    --count;
                 else 
-                    openBracketsIndices.pop();
+                    s[i] = ' ';
             }
         }
         
-        string result = "";
+        count = 0;
         
-        while(openBracketsIndices.size()) {
-            s[openBracketsIndices.top()] = ' ';
-            openBracketsIndices.pop();
+        for(int i = n-1; i >= 0; i--)
+        {
+             if(s[i] == ')')
+                 ++count;
+            else if(s[i] == '(')
+            {
+                if(count)
+                    --count;
+                else 
+                    s[i] = ' ';
+            }
         }
         
         for(auto i : s)
