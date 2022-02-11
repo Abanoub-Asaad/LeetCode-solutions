@@ -34,9 +34,6 @@ public:
                 finalArr.push_back(i);
         }
         
-        for(auto i : finalArr)
-            cout << i << " ";
-        
         for(int i = 0; i < finalArr.size(); i++, itr = itr -> next)
             itr -> next = new ListNode(finalArr[i]);
         
@@ -56,7 +53,7 @@ public:
     output: [3,2,1,4,5]
     
     Approach: 
-      - Create an array of nodes
+      - Create an array of values
         Work on this array
         When I have a k nodes, I'll reverse them
       - Loop over the array
