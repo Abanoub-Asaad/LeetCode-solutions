@@ -2,17 +2,15 @@ class Solution {
 public:
     void sortColors(vector<int>& nums) {
         
-        int cnt_zeroes = 0;
-        for(int itr1 = 0, itr2 = 0; itr2 < nums.size(); itr2++)
+        int n = nums.size();
+        for(int itr0 = 0, itr2 = n-1, i = 0; i <= itr2; )
         {
-            if(nums[itr2] == 0)
-                swap(nums[itr1], nums[itr2]), ++itr1, ++cnt_zeroes;
-        }
-        
-        for(int itr1 = cnt_zeroes, itr2 = 0; itr2 < nums.size(); itr2++)
-        {
-            if(nums[itr2] == 1)
-                swap(nums[itr1], nums[itr2]), ++itr1, ++cnt_zeroes;
+            if(nums[i] == 0)
+                swap(nums[itr0], nums[i]), ++itr0, ++i;
+            else if(nums[i] == 1)
+                ++i;
+            else if(nums[i] == 2)
+                swap(nums[itr2], nums[i]), --itr2; 
         }
     }
 };
