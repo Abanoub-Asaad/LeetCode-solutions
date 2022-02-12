@@ -12,7 +12,7 @@
 class Solution {
 public:
     
-    void dfs(TreeNode* root, int level, vector<int>& ans) {
+    void bfs(TreeNode* root, int level, vector<int>& ans) {
         
         // base case
         if(!root)
@@ -22,14 +22,14 @@ public:
             ans.push_back(root -> val);
         
         // recursive funs
-        dfs(root -> right, level+1, ans);
-        dfs(root -> left, level+1, ans);
+        bfs(root -> right, level+1, ans);
+        bfs(root -> left, level+1, ans);
     }
     
     vector<int> rightSideView(TreeNode* root) {
         
         vector<int> ans;
-        dfs(root, 1, ans);
+        bfs(root, 1, ans);
         return ans;
     }
 };
