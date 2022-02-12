@@ -43,7 +43,7 @@ public:
         /   \
       left  right 
             
-    Recursion problem "DFS" 
+    Recursion problem "BFS" 
     
     Base case: root = null
     Recusrseive funs: root -> right 
