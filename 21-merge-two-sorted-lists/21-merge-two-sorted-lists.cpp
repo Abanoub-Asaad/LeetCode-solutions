@@ -16,42 +16,23 @@ public:
         auto newHead = new ListNode(-1);
         auto dummyNode = newHead;
         
-        if(!it1 && !it2)
-            return {};
-        
-        while(it1 || it2) 
+        while(it1 && it2) 
         {
-            if(!it1)
-            {
-                newHead->next = it2;
-                break;
-            }
-            else if(!it2)
-            {
-                newHead->next = it1;
-                break;
-            }
-            else if (it1->val < it2->val)
+            if (it1->val < it2->val)
             {
                 newHead->next = new ListNode(it1->val);
                 newHead = newHead->next;
                 it1 = it1->next;
             } 
-            else if(it1->val > it2->val)
+            else 
             {
                 newHead->next = new ListNode(it2->val);
                 newHead = newHead->next;
                 it2 = it2->next;
             }
-            else 
-            {
-                newHead->next = new ListNode(it1->val);
-                newHead->next->next = new ListNode(it1->val); 
-                newHead = newHead->next->next;
-                it1 = it1->next, it2 = it2->next;
-            }
         }
         
+        newHead -> next = (!it1) ? it2 : it1; 
         return dummyNode->next;
     }
 };
