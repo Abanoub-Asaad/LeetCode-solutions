@@ -23,15 +23,13 @@ public:
         {
             if(!it1)
             {
-                newHead->next = new ListNode(it2->val);
-                newHead = newHead->next;
-                it2 = it2->next;
+                newHead->next = it2;
+                break;
             }
             else if(!it2)
             {
-                newHead->next = new ListNode(it1->val);
-                newHead = newHead->next;
-                it1 = it1->next;
+                newHead->next = it1;
+                break;
             }
             else if (it1->val < it2->val)
             {
