@@ -7,7 +7,9 @@ public:
         
         long long num = 2, c_sum = 0;
         vector<long long> ans;
-        while(c_sum+num <= finalSum) {
+        
+        while(c_sum+num <= finalSum)
+        {
             ans.push_back(num);
             c_sum += num;
             num += 2;
