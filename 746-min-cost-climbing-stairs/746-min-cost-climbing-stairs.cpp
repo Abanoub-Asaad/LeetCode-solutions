@@ -1,23 +1,15 @@
 class Solution {
 public:
     
-    vector<int> dp;
-    
-    int dfs(vector<int>& cost, int n) {
-        if(!n || n == 1)
-            return cost[n];
-        if(dp[n])
-            return dp[n];
-        
-        dp[n] = cost[n] + min(dfs(cost, n-1), dfs(cost, n-2));
-        return dp[n];
-    }
-    
     int minCostClimbingStairs(vector<int>& cost) {
-        
         int n = cost.size();
-        dp.resize(n, 0);
-        return min(dfs(cost, n-1), dfs(cost, n-2));
+        vector<int> dp(n, 0);    
+        for(int i = 0; i < n; i++) {
+            if(i < 2) dp[i] = cost[i];
+            else dp[i] = cost[i] + min(dp[i-1], dp[i-2]);
+        }
+        
+        return min(dp[n-1], dp[n-2]);
     }
 };
 
@@ -34,8 +26,11 @@ public:
            mincost(1) = cost[1]
     ------------------------------------------------       
     Optimization 1 - Top Down - add memoization to recursion
-        From exponential to linear.
-        
+        From exponential time to linear.
+    ------------------------------------------------
+    Optimization 2 - Bottom Up - convert recursion to iteration, to get rid of the recursive stack          "Tabulation"
+    ------------------------------------------------
+    
     [10,15,20]
            ^
     [0,1,2]
