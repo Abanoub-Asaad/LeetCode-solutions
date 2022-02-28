@@ -27,8 +27,17 @@ public:
 
 
 /*
-    DFS
+    
+    Recursive Soluction: using DFS
+        Time: O(N), and n is the num of nodes
+        Space: O(log N), if it's a completely balanced tree
+               O(N), if it's a completely unbalanced tree 
+    Approach:
     Compare each node to the corresponding node node in the other tree
     and check if both of them is the same or not 
+    
+    
+    
+    
     
 */
