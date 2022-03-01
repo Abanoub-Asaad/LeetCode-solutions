@@ -41,14 +41,15 @@ public:
         {
             for(int j = 0; j < m; j++) 
             {
+                int around = getSumAround(board, i, j);
                 if(!board[i][j]) 
                 {
-                    if(getSumAround(board, i, j) == 3)
+                    if(around == 3)
                         ans[i][j] = 1;
                 } 
                 else 
                 {
-                    if(getSumAround(board, i, j) < 2 || getSumAround(board, i, j) > 3)
+                    if(around < 2 || around > 3)
                         ans[i][j] = 0;
                 }
             }
