@@ -33,31 +33,25 @@ public:
     
     void gameOfLife(vector<vector<int>>& board) {
         
-        vector<vector<int>> ans;
+        vector<vector<int>> ans = board;
         n = board.size();
         m = board[0].size();
         
         for(int i = 0; i < n; i++) 
         {
-            vector<int> oneLine;
             for(int j = 0; j < m; j++) 
             {
                 if(!board[i][j]) 
                 {
                     if(getSumAround(board, i, j) == 3)
-                        oneLine.push_back(1);
-                    else
-                        oneLine.push_back(0);
+                        ans[i][j] = 1;
                 } 
                 else 
                 {
                     if(getSumAround(board, i, j) < 2 || getSumAround(board, i, j) > 3)
-                        oneLine.push_back(0);
-                    else 
-                        oneLine.push_back(1);
+                        ans[i][j] = 0;
                 }
             }
-            ans.push_back(oneLine);
         }
         
         board = ans;
@@ -67,6 +61,12 @@ public:
 
 /*
 
+    The Brute force solution:
+        Time: O(N*M)
+        Space: O(N*m)
+        
+    I need to optimize the space to change the given array in place
+        
     Caring about boundaries is important in this problem
 
     DRAFT
