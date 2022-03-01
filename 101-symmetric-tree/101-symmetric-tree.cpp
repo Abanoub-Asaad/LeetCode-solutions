@@ -15,7 +15,7 @@ public:
     bool dfs(TreeNode* p, TreeNode* q) {
         if(p == NULL || q == NULL)
             return p == q;
-        if(p->val != q->val || p->val != q->val)
+        if(p->val != q->val)
             return false;
         return dfs(p->left, q->right) && dfs(p->right, q->left);
     }
