@@ -45,13 +45,14 @@ public:
 };
 
 /*
+
+    Time: O(N), Space: O(N)
+    
     Start from the root
     Take the longest path
     
     - Get the level of the longest path using BFS = 4
     - Iterate over all the paths and when the path's level equal to max
        sum += leafOfThisPath
-    
-
 
 */
