@@ -29,24 +29,21 @@ public:
         
     */
     
-    unordered_map<int, vector<int>> userTweets;
-    unordered_map<int, int> timeTweet;
+    unordered_map<int, vector<pair<int, int>>> userTweets;
     unordered_map<int, unordered_set<int>> userFollowings;
-    int curTime = 1;
+    int curTime = 0;
     
     Twitter() {
         
     }
     
     void postTweet(int userId, int tweetId) {
-        userTweets[userId].push_back(curTime);
-        timeTweet[curTime] = tweetId;
-        ++curTime;
+        userTweets[userId].push_back({++curTime, tweetId});
     }
     
     vector<int> getNewsFeed(int userId) {
         
-        priority_queue<int> newsFeedPQ;
+        priority_queue<pair<int, int>> newsFeedPQ;
         
         //get the cur user's tweets
         for(auto tweet : userTweets[userId]) {
@@ -67,7 +64,7 @@ public:
         {
             if(newFeedList.size() == 10)
                 break;
-            newFeedList.push_back(timeTweet[newsFeedPQ.top()]);
+            newFeedList.push_back(newsFeedPQ.top().second);
             newsFeedPQ.pop();
         }
           
