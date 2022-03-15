@@ -16,8 +16,7 @@ public:
     }
     
     void backTrack(string digits, int i, string curStr) {
-        if(curStr.size() == digits.size())
-        {   
+        if(curStr.size() == digits.size()) {   
             ans.push_back(curStr);
             return;
         }
