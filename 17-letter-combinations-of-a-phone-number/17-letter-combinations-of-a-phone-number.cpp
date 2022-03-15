@@ -4,6 +4,17 @@ public:
     unordered_map<char, string> map;
     vector<string> ans;
     
+    void mapToChar() {
+        map['2'] = "abc";
+        map['3'] = "def";
+        map['4'] = "ghi";
+        map['5'] = "jkl";
+        map['6'] = "mno";
+        map['7'] = "pqrs";
+        map['8'] = "tuv";
+        map['9'] = "wxyz";
+    }
+    
     void backTrack(string digits, int i, string curStr) {
         if(curStr.size() == digits.size())
         {   
@@ -16,15 +27,7 @@ public:
     
     vector<string> letterCombinations(string digits) {
 
-        map['2'] = "abc";
-        map['3'] = "def";
-        map['4'] = "ghi";
-        map['5'] = "jkl";
-        map['6'] = "mno";
-        map['7'] = "pqrs";
-        map['8'] = "tuv";
-        map['9'] = "wxyz";
-     
+        mapToChar();
         if(digits.size())
             backTrack(digits, 0, "");
         return ans;
