@@ -35,6 +35,9 @@ public:
 };
 
 /*
+    Time: O(n * m * 4^N), N is the len of word
+    Space: O(len(word)) which is O(N)
+        
     base case: check if the curr pos is valid
     base case: if curr char in the board doesn't equal to the corresponding one in word
     base case: i reached my goal "target word"
