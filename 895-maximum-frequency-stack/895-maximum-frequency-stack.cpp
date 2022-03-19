@@ -4,6 +4,11 @@ public:
     /*
         Time: O(log n)
         Space: O(n)
+        
+        The hierarchy order:
+            1. Frequency of the number
+            2. Position 
+            3. Element.
     */
     
     priority_queue<pair<int, pair<int, int>>> pq;
