@@ -44,6 +44,9 @@ public:
 };
 
 /*
+    Time: O(N^2)
+    Space: O(N^2)
+    
     Return the length of the "shortest clear path"
     if there's no clear path, return -1
     I can only visit cills that have 0's
