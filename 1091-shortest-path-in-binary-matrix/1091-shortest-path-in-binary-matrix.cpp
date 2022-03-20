@@ -7,7 +7,6 @@ public:
         int n = grid.size();
         int depth = 0;
         queue<pair<int, int>> q;
-        unordered_set<string> visited;
         q.push({s_x, s_y});
         
         while(q.size()) 
@@ -27,9 +26,8 @@ public:
                     int cur_x = x + dir[0];
                     int cur_y = y + dir[1];
                     
-                    string key = to_string(cur_x)+","+to_string(cur_y);
-                    if(min(cur_x, cur_y) >= 0 && max(cur_x, cur_y) < n && grid[cur_x][cur_y] == 0 && !visited.count(key))
-                        q.push({cur_x, cur_y}), visited.insert(key);
+                    if(min(cur_x, cur_y) >= 0 && max(cur_x, cur_y) < n && grid[cur_x][cur_y] == 0)
+                        q.push({cur_x, cur_y}), grid[cur_x][cur_y] = 1;
                 }   
             }
         }
@@ -61,5 +59,4 @@ public:
     queue<pair<int, int>> q;
     q.push({0,0});
     
-    I don't need to have a visited array
 */
