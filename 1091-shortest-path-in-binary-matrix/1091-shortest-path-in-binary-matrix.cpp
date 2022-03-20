@@ -26,7 +26,7 @@ public:
                     int cur_x = x + dir[0];
                     int cur_y = y + dir[1];
                     
-                    if(min(cur_x, cur_y) >= 0 && max(cur_x, cur_y) < n && grid[cur_x][cur_y] == 0)
+                    if(min(cur_x, cur_y) >= 0 && max(cur_x, cur_y) < n && !grid[cur_x][cur_y])
                         q.push({cur_x, cur_y}), grid[cur_x][cur_y] = 1;
                 }   
             }
