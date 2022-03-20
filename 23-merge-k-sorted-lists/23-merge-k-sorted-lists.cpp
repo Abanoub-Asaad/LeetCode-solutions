@@ -9,15 +9,13 @@
  * };
  */
 
-typedef pair<int, ListNode*> pi;
-
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        priority_queue<pi, vector<pi>, greater<pi>> pq;
+        priority_queue<pair<int, ListNode*>> pq;
         for(auto list : lists) {
             if(list)
-                pq.emplace(make_pair(list->val, list));
+                pq.emplace(make_pair(-list->val, list));
         }
         
         auto head = new ListNode(-1);
@@ -25,11 +23,11 @@ public:
         while(pq.size()) 
         {
             auto cur = pq.top();
-            itr->next = new ListNode(cur.first);
+            itr->next = new ListNode(-cur.first);
             itr = itr->next;
             pq.pop();
             if(cur.second -> next)
-                pq.push({cur.second->next->val, cur.second->next});
+                pq.push({-cur.second->next->val, cur.second->next});
         }
         
         return head->next;
