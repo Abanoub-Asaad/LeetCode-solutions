@@ -3,6 +3,7 @@ public:
     
     int bfs(vector<vector<int>>& grid, int s_x, int s_y) {
         
+        vector<vector<int>> directions = {{1,1}, {0,1},{1,0},{0,-1},{-1,0},{-1, -1},{1, -1},{-1, 1}};
         int n = grid.size();
         int depth = 0;
         queue<pair<int, int>> q;
@@ -21,38 +22,15 @@ public:
                 if(x == n-1 && y == n-1)
                     return depth;
                     
-                
-                string key = to_string(x-1)+","+to_string(y-1);
-                if(x-1 >= 0 && y-1 >= 0 && grid[x-1][y-1] == 0 && !visited.count(key))
-                    q.push({x-1, y-1}), visited.insert(key);
-                
-                key = to_string(x-1)+","+to_string(y);
-                if(x-1 >= 0 && grid[x-1][y] == 0 && !visited.count(key))
-                    q.push({x-1, y}), visited.insert(key);
-                
-                key = to_string(x-1)+","+to_string(y+1);
-                if(x-1 >= 0 && y+1 < n && grid[x-1][y+1] == 0 && !visited.count(key))
-                    q.push({x-1, y+1}), visited.insert(key);
-                
-                key = to_string(x)+","+to_string(y-1);
-                if(y-1 >= 0 && grid[x][y-1] == 0 && !visited.count(key))
-                    q.push({x, y-1}), visited.insert(key);
-                
-                key = to_string(x)+","+to_string(y+1);
-                if(y+1 < n && grid[x][y+1] == 0 && !visited.count(key))
-                    q.push({x, y+1}), visited.insert(key);
-                
-                key = to_string(x+1)+","+to_string(y-1);
-                if(x+1 < n && y-1 >= 0 && grid[x+1][y-1] == 0 && !visited.count(key))
-                    q.push({x+1, y-1}), visited.insert(key);
-                
-                key = to_string(x+1)+","+to_string(y);
-                if(x+1 < n && grid[x+1][y] == 0 && !visited.count(key))
-                    q.push({x+1, y}), visited.insert(key);
-                
-                key = to_string(x+1)+","+to_string(y+1);
-                if(x+1 < n && y+1 < n && grid[x+1][y+1] == 0 && !visited.count(key))
-                    q.push({x+1, y+1}), visited.insert(key);
+                for(auto dir : directions) 
+                {
+                    int cur_x = x + dir[0];
+                    int cur_y = y + dir[1];
+                    
+                    string key = to_string(cur_x)+","+to_string(cur_y);
+                    if(min(cur_x, cur_y) >= 0 && max(cur_x, cur_y) < n && grid[cur_x][cur_y] == 0 && !visited.count(key))
+                        q.push({cur_x, cur_y}), visited.insert(key);
+                }   
             }
         }
         
