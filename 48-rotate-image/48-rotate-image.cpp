@@ -5,10 +5,9 @@ public:
         vector<vector<int>> arr(n, vector<int>(n,0));
         int x = n-1, y = 0;
         int i = 0, j = 0;
-        while(i < n && y < n) 
-        {
-            while(j < n && x > -1) 
-            {
+        
+        while(i < n) {
+            while(j < n) {
                 arr[i][j] = matrix[x][y];
                 x--;
                 j++;
