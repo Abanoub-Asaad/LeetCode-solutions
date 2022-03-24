@@ -75,3 +75,66 @@ public:
     }
 };
 
+
+/********************************************
+    Time: O(N^4)
+    Space: O(N^2)
+*********************************************
+class Solution {
+public:
+    
+    int bfs(vector<vector<int>>& grid, int i, int j) {
+        int n = grid.size();
+        int oneIslandSize = 0;
+        vector<vector<int>> directions = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
+        vector<vector<int>> visited(n, vector<int>(n, 0));
+        queue<pair<int, int>> q;
+        q.push({i, j});
+        visited[i][j] = 1;
+        
+        while(q.size()) 
+        {
+            int m = q.size();
+            while(m--) 
+            {
+                pair<int, int> curr = q.front();
+                q.pop();
+                oneIslandSize++;
+                int curX = curr.first;
+                int curY = curr.second;
+                
+                for(auto &dir : directions) 
+                {
+                    int x = curX + dir[0];
+                    int y = curY + dir[1];
+                    if(min(x,y) >= 0 && max(x,y) < n && grid[x][y] == 1 && !visited[x][y])
+                        q.push({x,y}), visited[x][y] = 1;
+                }
+            }
+        }
+        
+        return oneIslandSize;
+    }
+    
+    int largestIsland(vector<vector<int>>& grid) {
+        int n = grid.size();
+        int mxIsland = 1;
+        bool zeroFound = 0;
+        for(int i = 0; i < n; i++) 
+        {
+            for(int j = 0; j < n; j++) 
+            {
+                if(grid[i][j] == 0) 
+                {
+                    zeroFound = 1;
+                    grid[i][j] = 1;
+                    mxIsland = max(mxIsland, bfs(grid, i, j));
+                    grid[i][j] = 0;
+                }
+            }
+        }
+        
+        return (zeroFound) ? mxIsland : n*n;
+    }
+};
+*********************************************/
