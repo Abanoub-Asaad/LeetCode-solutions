@@ -1,7 +1,7 @@
-/****************************
- Time: O(N)
- Space: O(N)
-****************************/
+/*****************************************************************************
+ Time: O(N*k), where N is the size of string and k is length of binary code.
+ Space: O(N*k)
+ ****************************************************************************/
 class Solution {
 public:
     bool hasAllCodes(string s, int k) {
